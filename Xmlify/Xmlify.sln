@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tjoc.SqlServer.Dts.Pipeline.Xmlify", "Tjoc.SqlServer.Dts.Pipeline.Xmlify\Tjoc.SqlServer.Dts.Pipeline.Xmlify.csproj", "{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}"
+EndProject
+Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "Test Harness", "Test Harness\Test Harness.dtproj", "{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "Installer\Installer.wixproj", "{67A7C03A-A6DC-4FFE-9566-CFF62753042A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9} = {E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Installer\\Installer.wixproj
+		SccProjectName1 = Installer
+		SccLocalPath1 = Installer
+		SccProjectUniqueName2 = Test\u0020Harness\\Test\u0020Harness.dtproj
+		SccProjectName2 = Test\u0020Harness
+		SccLocalPath2 = Test\u0020Harness
+		SccProjectUniqueName3 = Tjoc.SqlServer.Dts.Pipeline.Xmlify\\Tjoc.SqlServer.Dts.Pipeline.Xmlify.csproj
+		SccProjectName3 = Tjoc.SqlServer.Dts.Pipeline.Xmlify
+		SccLocalPath3 = Tjoc.SqlServer.Dts.Pipeline.Xmlify
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Development|Any CPU = Development|Any CPU
+		Development|Mixed Platforms = Development|Mixed Platforms
+		Development|x86 = Development|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Development|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Development|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Development|x86.ActiveCfg = Debug|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}.Release|x86.ActiveCfg = Release|Any CPU
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|Any CPU.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|Any CPU.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|Mixed Platforms.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|Mixed Platforms.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|x86.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Debug|x86.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|Any CPU.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|Any CPU.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|Mixed Platforms.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|Mixed Platforms.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|x86.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Development|x86.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|Any CPU.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|Any CPU.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|Mixed Platforms.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|Mixed Platforms.Build.0 = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|x86.ActiveCfg = Development
+		{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}.Release|x86.Build.0 = Development
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Debug|x86.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Debug|x86.Build.0 = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Development|Any CPU.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Development|Mixed Platforms.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Development|Mixed Platforms.Build.0 = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Development|x86.ActiveCfg = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Development|x86.Build.0 = Debug|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Release|Any CPU.ActiveCfg = Release|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Release|x86.ActiveCfg = Release|x86
+		{67A7C03A-A6DC-4FFE-9566-CFF62753042A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

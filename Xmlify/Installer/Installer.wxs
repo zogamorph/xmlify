@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="1693F707-B733-4604-B08C-0136F4FF8DA5" Name="Xmlify 2008" Language="1033" Version="2.0.0.0" Manufacturer="Installer" UpgradeCode="941CF1F1-8ACA-4360-ACAA-913A7F4C3DBD">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MSSQLSERVER" Name="Microsoft SQL Server">
+          <Directory Id="_100" Name="100">
+            <Directory Id="DTS" Name="DTS">
+              <Directory Id="PipelineComponents" Name="PipelineComponents">
+                <Component Id="XmlifyDLL" Guid="7541C7E6-A449-47d5-A149-8D424C26388F">
+                  <File Id="Xmlify.DLL" 
+                        Name="Tjoc.SqlServer.Dts.Pipeline.Xmlify.dll" 
+                        DiskId="1" 
+                        Source="..\Tjoc.SqlServer.Dts.Pipeline.Xmlify\Bin\Debug\Tjoc.SqlServer.Dts.Pipeline.Xmlify.dll"
+                        />
+                </Component>
+              </Directory>
+              <Directory Id="PipelineComponents_GAC" Name="PipelineComponents_GAC">
+                <Component Id="XmlifyDLL_GAC" Guid="81341CC1-F2B3-4d1a-BA33-A648DB48FFD3">
+                  <File Id="XmlifyGAC.DLL" 
+                        Name="Tjoc.SqlServer.Dts.Pipeline.Xmlify.dll" 
+                        Assembly=".net" 
+                        KeyPath="yes" 
+                        DiskId="1" 
+                        Source="..\Tjoc.SqlServer.Dts.Pipeline.Xmlify\Bin\Debug\Tjoc.SqlServer.Dts.Pipeline.Xmlify.dll"
+                        />
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="Xmlify component" Level="1">
+      <!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+      <ComponentRef Id="XmlifyDLL" />
+      <ComponentRef Id="XmlifyDLL_GAC" />
+    </Feature>
+  </Product>
+</Wix>
