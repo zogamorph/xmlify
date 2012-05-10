@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tjoc.SqlServer.Dts.Pipeline.Xmlify", "Tjoc.SqlServer.Dts.Pipeline.Xmlify\Tjoc.SqlServer.Dts.Pipeline.Xmlify.csproj", "{E4AD1D4A-C8A2-4D13-8A3D-4AEE75304FF9}"
 EndProject
 Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "Test Harness", "Test Harness\Test Harness.dtproj", "{027F6D42-79B4-4A2B-9E8F-EE2B6C56773F}"
@@ -14,7 +14,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Installer\\Installer.wixproj
 		SccProjectName1 = Installer
