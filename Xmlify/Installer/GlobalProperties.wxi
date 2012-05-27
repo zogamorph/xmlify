@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  
+  <Property Id="SQLSERVER2008DTSPATH" Value="c:\test">
+    <RegistrySearch 
+      Id="SQLServer2008DTSPathReg" 
+      Type="directory"
+      Root="HKLM" 
+      Key="SOFTWARE\Microsoft\Microsoft SQL Server\100\DTS\Setup" 
+      Name="SQLPath"
+      Win64="yes"/>
+  </Property>
+  
+</Include>

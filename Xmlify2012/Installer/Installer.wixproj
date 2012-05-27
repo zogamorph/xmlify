@@ -6,7 +6,7 @@
     <ProductVersion>3.5</ProductVersion>
     <ProjectGuid>{67a7c03a-a6dc-4ffe-9566-cff62753042a}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Xmlify 2008</OutputName>
+    <OutputName>Xmlify 2012</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -28,9 +28,9 @@
     <Compile Include="Installer.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tjoc.SqlServer.Dts.Pipeline.Xmlify\Tjoc.SqlServer.Dts.Pipeline.Xmlify.csproj">
-      <Name>Tjoc.SqlServer.Dts.Pipeline.Xmlify</Name>
-      <Project>{e4ad1d4a-c8a2-4d13-8a3d-4aee75304ff9}</Project>
+    <ProjectReference Include="..\Tjoc.SqlServer.SSIS.Pipeline.Xmlify\Tjoc.SqlServer.SSIS.Pipeline.Xmlify.csproj">
+      <Name>Tjoc.SqlServer.SSIS.Pipeline.Xmlify</Name>
+      <Project>{5f6b3362-5b7e-4c53-a1da-5da0620bc374}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
