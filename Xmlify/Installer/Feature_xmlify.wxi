@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+	<Feature Id="ProductFeature" Title="Xmlify component" Level="1">
+		<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+		<ComponentRef Id="XmlifyDLL" />
+		<ComponentRef Id="XmlifyDLL_GAC" />
+	</Feature>
+
+	<Component Id="XmlifyDLL" 
+						 Guid="7541C7E6-A449-47d5-A149-8D424C26388F"
+						 Directory="PipelineComponents"
+						 >
+		<File Id="Xmlify.DLL"
+					Name="$(var.Tjoc.SqlServer.Dts.Pipeline.Xmlify.TargetFileName)"
+					DiskId="1"
+					Source="$(var.Tjoc.SqlServer.Dts.Pipeline.Xmlify.TargetPath)"
+		/>
+	</Component>
+
+	<Component Id="XmlifyDLL_GAC" 
+						 Guid="81341CC1-F2B3-4d1a-BA33-A648DB48FFD3"
+						 Directory="PipelineComponents_GAC"
+						 >
+		<File Id="XmlifyGAC.DLL"
+					Name="$(var.Tjoc.SqlServer.Dts.Pipeline.Xmlify.TargetFileName)"
+					Assembly=".net"
+					KeyPath="yes"
+					DiskId="1"
+					Source="$(var.Tjoc.SqlServer.Dts.Pipeline.Xmlify.TargetPath)"
+												/>
+	</Component>
+	
+</Include>

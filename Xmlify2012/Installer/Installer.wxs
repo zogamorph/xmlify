@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="1693F707-B733-4604-B08C-0136F4FF8DA5" 
-           Name="Xmlify 2008" 
-           Language="1033" 
-           Version="2.0.0.0" 
-           Manufacturer="Installer" 
-           UpgradeCode="941CF1F1-8ACA-4360-ACAA-913A7F4C3DBD">
-    
-    <Package InstallerVersion="400" 
-             Compressed="yes" 
+  <Product Id="5C6B90C9-900E-41F8-9355-73D0D486AC2A"
+           Name="Xmlify 2012"
+           Language="1033"
+           Version="2.0.0.0"
+           Manufacturer="Installer"
+           UpgradeCode="F52B506C-0B57-46E0-900B-F85F9B278620">
+
+    <Package InstallerVersion="400"
+             Compressed="yes"
              InstallPrivileges="elevated"
              />
 
     <Condition Message="You must be an Administrator to install this software.  Please launch set up from an elevated command prompt.">Privileged</Condition>
-    
-    <Media Id="1" 
-           Cabinet="xmlify2008.cab" 
+
+    <Media Id="1"
+           Cabinet="xmlify2012.cab"
            EmbedCab="yes" />
-    
+
     <InstallExecuteSequence>
       <!-- Automatically uninstall any previous versions -->
       <RemoveExistingProducts Before="InstallInitialize" />

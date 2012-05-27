@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  
+  <!-- TODO: Put your code here. -->
+  <Directory Id="TARGETDIR"
+             Name="SourceDir">
+    <Directory Id="SQLSERVER2012DTSPATH">
+      <Directory Id="PipelineComponents"
+                 Name="PipelineComponents"/>
+
+      <Directory Id="PipelineComponents_GAC"
+                 Name="PipelineComponents_GAC"/>
+    </Directory>
+  </Directory>
+  
+</Include>
