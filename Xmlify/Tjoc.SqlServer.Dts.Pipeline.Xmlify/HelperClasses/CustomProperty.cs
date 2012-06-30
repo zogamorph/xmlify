@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CustomProperty.cs" company="Hiscox - Group MI">
-//   (C) 2010
+// <copyright file="CustomProperty.cs" company="">
+//   
 // </copyright>
 // <summary>
 //   The custom property.
@@ -20,30 +20,30 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
     /// </summary>
     internal class CustomProperty
     {
-        #region Properties
+        #region Public Properties
 
         /// <summary>
-        /// Gets or sets DefaultValue.
+        ///   Gets or sets DefaultValue.
         /// </summary>
         public object DefaultValue { get; set; }
 
         /// <summary>
-        /// Gets or sets Description.
+        ///   Gets or sets Description.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets Name.
+        ///   Gets or sets Name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets PersistState.
+        ///   Gets or sets PersistState.
         /// </summary>
         public DTSPersistState PersistState { get; set; }
 
         /// <summary>
-        /// Gets or sets PropertyExpressionType.
+        ///   Gets or sets PropertyExpressionType.
         /// </summary>
         public DTSCustomPropertyExpressionType PropertyExpressionType { get; set; }
 
