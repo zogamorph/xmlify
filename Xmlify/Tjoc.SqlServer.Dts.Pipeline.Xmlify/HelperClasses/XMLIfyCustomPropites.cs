@@ -59,6 +59,11 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
         /// </summary>
         public const string XMLNAMESPACE = "XMLNamespace";
 
+        /// <summary>
+        /// The Element Format
+        /// </summary>
+        public const string ELEMENTFORMAT = "ElementFormat";
+
         #endregion
 
         #region Public Methods
@@ -102,70 +107,82 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
 
             // Creating the Column Element Name property
             customPropertiesList.Add(
-                XMLIfyCustomPropites.COLUMNELEMENTNAME, 
+                XMLIfyCustomPropites.COLUMNELEMENTNAME,
                 new CustomProperty
                 {
-                    Name = "Column Element Name", 
-                    DefaultValue = "col", 
-                    Description = "Set the Name of column Element", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "Column Element Name",
+                    DefaultValue = "col",
+                    Description = "Set the Name of column Element",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
             // Creating the Row Element Name property
             customPropertiesList.Add(
-                XMLIfyCustomPropites.ROWELEMENTNAME, 
+                XMLIfyCustomPropites.ROWELEMENTNAME,
                 new CustomProperty
                 {
-                    Name = "Row Element Name", 
-                    DefaultValue = "row", 
-                    Description = "Set the Name of row Element", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "Row Element Name",
+                    DefaultValue = "row",
+                    Description = "Set the Name of row Element",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
             // Creating the Null Attribute Name property
-            customPropertiesList.Add(XMLIfyCustomPropites.NULLATTRIBUTENAME, 
+            customPropertiesList.Add(XMLIfyCustomPropites.NULLATTRIBUTENAME,
                 new CustomProperty
                 {
-                    Name = "Null Attribute Name", 
-                    DefaultValue = "null", 
-                    Description = "Set the Name of column Element", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "Null Attribute Name",
+                    DefaultValue = "null",
+                    Description = "Set the Name of column Element",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
             // Creating the Name Attribute Name property
-            customPropertiesList.Add(XMLIfyCustomPropites.NAMEATTRIBUTENAME, 
+            customPropertiesList.Add(XMLIfyCustomPropites.NAMEATTRIBUTENAME,
                 new CustomProperty
                 {
-                    Name = "Name Attribute Name", 
-                    DefaultValue = "name", 
-                    Description = "Set the Name of Attribute", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "Name Attribute Name",
+                    DefaultValue = "name",
+                    Description = "Set the Name of Attribute",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
             // Creating the XML Namespace property
-            customPropertiesList.Add(XMLIfyCustomPropites.XMLNAMESPACE, 
+            customPropertiesList.Add(XMLIfyCustomPropites.XMLNAMESPACE,
                 new CustomProperty
                 {
-                    Name = "XML Namespace", 
-                    DefaultValue = string.Empty, 
-                    Description = "Set the XML namespace", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "XML Namespace",
+                    DefaultValue = string.Empty,
+                    Description = "Set the XML namespace",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
             // Creating the Include Column Name property
             customPropertiesList.Add(
-                XMLIfyCustomPropites.INCLUDECOLUMNNAME, 
+                XMLIfyCustomPropites.INCLUDECOLUMNNAME,
                 new CustomProperty
                 {
-                    Name = "Include Column Name", 
-                    DefaultValue = true, 
-                    Description = "Set the flag to Include the column name as attribute", 
-                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY, 
+                    Name = "Include Column Name",
+                    DefaultValue = true,
+                    Description = "Set the flag to Include the column name as attribute",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
+                    PersistState = DTSPersistState.PS_DEFAULT
+                });
+
+            // Creating the Include Column Name property
+            customPropertiesList.Add(
+                XMLIfyCustomPropites.ELEMENTFORMAT,
+                new CustomProperty
+                {
+                    Name = "Use Element Format",
+                    DefaultValue = true,
+                    Description = "Set the flag to switch between Element / Attribute Formatting",
+                    PropertyExpressionType = DTSCustomPropertyExpressionType.CPET_NOTIFY,
                     PersistState = DTSPersistState.PS_DEFAULT
                 });
 
