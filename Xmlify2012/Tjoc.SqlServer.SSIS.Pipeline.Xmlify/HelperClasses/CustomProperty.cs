@@ -1,19 +1,22 @@
-﻿using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CustomProperty.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The custom property.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
 {
-    #region Using Directives
-
-    
-
-    #endregion
+    using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 
     /// <summary>
-    ///   The custom property.
+    /// The custom property.
     /// </summary>
     internal class CustomProperty
     {
-        #region Properties
+        #region Public Properties
 
         /// <summary>
         ///   Gets or sets DefaultValue.

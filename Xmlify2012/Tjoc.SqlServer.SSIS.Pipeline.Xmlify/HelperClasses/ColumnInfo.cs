@@ -1,15 +1,18 @@
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ColumnInfo.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The column info.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
 {
-    #region using directive
-
-    
-
-    #endregion
+    using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 
     /// <summary>
-    ///   The column info.
+    /// The column info.
     /// </summary>
     internal class ColumnInfo
     {

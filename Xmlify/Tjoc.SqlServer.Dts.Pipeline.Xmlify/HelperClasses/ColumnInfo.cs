@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ColumnInfo.cs" company="Codeplex">
+// <copyright file="ColumnInfo.cs" company="">
 //   
 // </copyright>
 // <summary>
