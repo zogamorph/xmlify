@@ -572,7 +572,19 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 // Is the column null?
                 if (!buffer.IsNull(colInfo.BufferColumnIndex))
                 {
-                    writer.WriteValue(buffer[colInfo.BufferColumnIndex].ToString());
+                    BufferColumn bufferColumn = buffer.GetColumnInfo(colInfo.BufferColumnIndex);
+                    if (bufferColumn.DataType == DataType.DT_NTEXT || bufferColumn.DataType == DataType.DT_TEXT)
+                    {
+
+                        writer.WriteValue(Encoding.Default.GetString(buffer.GetBlobData(colInfo.BufferColumnIndex, 0, (int)buffer.GetBlobLength(colInfo.BufferColumnIndex))));
+
+                    }
+                    else
+                    {
+
+                        writer.WriteValue(buffer[colInfo.BufferColumnIndex].ToString());
+
+                    }
                 }
                 else
                 {
