@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
+namespace Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014
 {
     #region Directives
 
@@ -24,7 +24,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
     using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
     using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 
-    using Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses;
+    using Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014.HelperClasses;
 
     #endregion
 
@@ -34,7 +34,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
     [SuppressMessage("Microsoft.Interoperability", "CA1405:ComVisibleTypeBaseTypesShouldBeComVisible")]
     [ComVisible(true)]
     [DtsPipelineComponent(DisplayName = "Xmlify", Description = "Converts multiple columns into a single Xml column", 
-        IconResource = "Tjoc.SqlServer.Dts.Pipeline.Xmlify.XmlifyTask.ico")]
+        IconResource = "Tjoc.SqlServer.SSIS.Pipeline.Xmlify.XmlifyTask.ico")]
     public class XmlifyTask : PipelineComponent
     {
         #region Fields
@@ -347,10 +347,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// The validate.
+        ///     The validate.
         /// </summary>
         /// <returns>
-        /// The <see cref="DTSValidationStatus"/>.
+        ///     The <see cref="DTSValidationStatus" />.
         /// </returns>
         [CLSCompliant(false)]
         public override DTSValidationStatus Validate()
