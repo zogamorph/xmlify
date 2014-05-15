@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
+namespace Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014.HelperClasses
 {
     #region Directives
 
@@ -110,10 +110,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
         }
 
         /// <summary>
-        /// The create custom property list.
+        ///     The create custom property list.
         /// </summary>
         /// <returns>
-        /// The <see cref="Dictionary"/>.
+        ///     The <see cref="Dictionary" />.
         /// </returns>
         public static Dictionary<string, CustomProperty> CreateCustomPropertyList()
         {

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses
+namespace Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014.HelperClasses
 {
     #region Directives
 

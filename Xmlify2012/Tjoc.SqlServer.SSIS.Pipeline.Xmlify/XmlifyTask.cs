@@ -1,15 +1,15 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="XmlifyTask.cs" company="Codeplex">
-//   
+// <copyright file="XmlifyTask.cs" company="CodePlex">
+//   XMLIfy (c) 2012
 // </copyright>
 // <summary>
 //   The xmlify task.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
+namespace Tjoc.SqlServer.SSIS.Pipeline.Xmlify2012
 {
-    #region using directive
+    #region Directives
 
     using System;
     using System.Collections.Generic;
@@ -24,78 +24,78 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
     using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
     using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 
-    using Tjoc.SqlServer.Dts.Pipeline.Xmlify.HelperClasses;
+    using Tjoc.SqlServer.SSIS.Pipeline.Xmlify2012.HelperClasses;
 
     #endregion
 
     /// <summary>
-    /// The xmlify task.
+    ///     The xmlify task.
     /// </summary>
     [SuppressMessage("Microsoft.Interoperability", "CA1405:ComVisibleTypeBaseTypesShouldBeComVisible")]
     [ComVisible(true)]
-    [DtsPipelineComponent(DisplayName = "Xmlify", Description = "Converts multiple columns into a single Xml column",
+    [DtsPipelineComponent(DisplayName = "Xmlify", Description = "Converts multiple columns into a single Xml column", 
         IconResource = "Tjoc.SqlServer.SSIS.Pipeline.Xmlify.XmlifyTask.ico")]
     public class XmlifyTask : PipelineComponent
     {
-        #region Constants and Fields
+        #region Fields
 
         /// <summary>
-        ///   Gets or sets ColumnElementName.
+        ///     Gets or sets ColumnElementName.
         /// </summary>
         public string columnElementName;
 
         /// <summary>
-        ///   Gets or sets a value indicating whether IncludeColumnName.
+        ///     Gets or sets a value indicating whether IncludeColumnName.
         /// </summary>
         public bool includeColumnName;
 
         /// <summary>
-        ///   Gets or sets NameAttributeName.
+        ///     Gets or sets NameAttributeName.
         /// </summary>
         public string nameAttributeName;
 
         /// <summary>
-        ///   The cancel event.
+        ///     The cancel event.
         /// </summary>
         private bool cancelEvent;
 
         /// <summary>
-        ///   The custom properties list.
+        ///     The custom properties list.
         /// </summary>
         private Dictionary<string, CustomProperty> customPropertiesList;
 
         /// <summary>
-        ///   The flag to control element formatting
+        ///     The flag to control element formatting
         /// </summary>
         private bool elementFormat;
 
         /// <summary>
-        ///   A flag to include the XML tag.
+        ///     A flag to include the XML tag.
         /// </summary>
         private bool includeXMLTag;
 
         /// <summary>
-        ///   The _input column infos.
+        ///     The _input column infos.
         /// </summary>
         private ColumnInfo[] inputColumnInfos;
 
         /// <summary>
-        ///   Gets or sets NullAttributeName.
+        ///     Gets or sets NullAttributeName.
         /// </summary>
         private string nullAttributeName;
 
         /// <summary>
-        ///   The _output column infos.
+        ///     The _output column infos.
         /// </summary>
         private ColumnInfo[] outputColumnInfos;
 
         /// <summary>
-        ///   Gets or sets RowElementName.
+        ///     Gets or sets RowElementName.
         /// </summary>
         private string rowElementName;
 
         /// <summary>
-        ///   Gets or sets Namespace.
+        ///     Gets or sets Namespace.
         /// </summary>
         private string xmlNamespace;
 
@@ -104,13 +104,14 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         #region Public Methods and Operators
 
         /// <summary>
-        /// Called when an IDTSOutput100 is deleted from the component. Disallow outputs to be deleted by throwing an exception.
+        /// Called when an IDTSOutput100 is deleted from the component. Disallow outputs to be deleted by throwing an
+        ///     exception.
         /// </summary>
         /// <param name="outputId">
-        /// The ID of the output to delete. 
+        /// The ID of the output to delete.
         /// </param>
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes")]
-        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters",
+        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters", 
             MessageId = "System.Exception.#ctor(System.String)")]
         public override void DeleteOutput(int outputId)
         {
@@ -118,7 +119,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// The initialize.
+        ///     The initialize.
         /// </summary>
         public override void Initialize()
         {
@@ -130,15 +131,16 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// Called when an IDTSOutput100 is added to the component. Disallow new outputs by throwing an exception.
         /// </summary>
         /// <param name="insertPlacement">
-        /// The location, relative to the output specified by outputId,to insert the new output. 
+        /// The location, relative to the output specified by outputId,to insert the new output.
         /// </param>
         /// <param name="outputId">
-        /// The ID of the output that the new output is located next to. 
+        /// The ID of the output that the new output is located next to.
         /// </param>
         /// <returns>
+        /// The <see cref="IDTSOutput100"/>.
         /// </returns>
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes")]
-        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters",
+        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters", 
             MessageId = "System.Exception.#ctor(System.String)")]
         [CLSCompliant(false)]
         public override IDTSOutput100 InsertOutput(DTSInsertPlacement insertPlacement, int outputId)
@@ -147,7 +149,8 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// Called prior to ProcessInput, the buffer column index, index of the character to change, and the operation for each column in the input collection is read, and stored.
+        ///     Called prior to ProcessInput, the buffer column index, index of the character to change, and the operation for each
+        ///     column in the input collection is read, and stored.
         /// </summary>
         public override void PreExecute()
         {
@@ -186,12 +189,15 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
             {
                 IDTSInputColumn100 column = input.InputColumnCollection[i];
                 this.inputColumnInfos[i] = new ColumnInfo
-                    {
-                        BufferColumnIndex = this.BufferManager.FindColumnByLineageID(input.Buffer, column.LineageID),
-                        ColumnDisposition = column.ErrorRowDisposition,
-                        LineageId = column.LineageID,
-                        Name = column.Name
-                    };
+                                               {
+                                                   BufferColumnIndex =
+                                                       this.BufferManager.FindColumnByLineageID(
+                                                           input.Buffer, 
+                                                           column.LineageID), 
+                                                   ColumnDisposition = column.ErrorRowDisposition, 
+                                                   LineageId = column.LineageID, 
+                                                   Name = column.Name
+                                               };
             }
 
             IDTSOutput100 output = this.ComponentMetaData.OutputCollection[0];
@@ -201,12 +207,15 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
             {
                 IDTSOutputColumn100 column = output.OutputColumnCollection[i];
                 this.outputColumnInfos[i] = new ColumnInfo
-                    {
-                        BufferColumnIndex = this.BufferManager.FindColumnByLineageID(input.Buffer, column.LineageID),
-                        ColumnDisposition = column.ErrorRowDisposition,
-                        LineageId = column.LineageID,
-                        Name = column.Name
-                    };
+                                                {
+                                                    BufferColumnIndex =
+                                                        this.BufferManager.FindColumnByLineageID(
+                                                            input.Buffer, 
+                                                            column.LineageID), 
+                                                    ColumnDisposition = column.ErrorRowDisposition, 
+                                                    LineageId = column.LineageID, 
+                                                    Name = column.Name
+                                                };
             }
         }
 
@@ -214,13 +223,13 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// Called when a PipelineBuffer is passed to the component.
         /// </summary>
         /// <param name="inputId">
-        /// The ID of the Input that the buffer contains rows for. 
+        /// The ID of the Input that the buffer contains rows for.
         /// </param>
         /// <param name="buffer">
-        /// The PipelineBuffer containing the columns defined in the IDTSInput100. 
+        /// The PipelineBuffer containing the columns defined in the IDTSInput100.
         /// </param>
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes")]
-        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters",
+        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters", 
             MessageId = "System.Exception.#ctor(System.String)")]
         public override void ProcessInput(int inputId, PipelineBuffer buffer)
         {
@@ -258,7 +267,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
 
                 // TODO - namespace table.
                 StringBuilder sb = new StringBuilder();
-                using (XmlWriter writer = XmlWriter.Create(sb, new XmlWriterSettings { OmitXmlDeclaration = !this.includeXMLTag }))
+                using (
+                    XmlWriter writer = XmlWriter.Create(
+                        sb, 
+                        new XmlWriterSettings { OmitXmlDeclaration = !this.includeXMLTag }))
                 {
                     if (!string.IsNullOrEmpty(this.xmlNamespace))
                     {
@@ -287,7 +299,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// Called when the component is initially added to the data flow task. Add the input, output, and error output.
+        ///     Called when the component is initially added to the data flow task. Add the input, output, and error output.
         /// </summary>
         public override void ProvideComponentProperties()
         {
@@ -315,17 +327,18 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 this.customPropertiesList.Select(customProperty => customProperty.Value))
             {
                 XMLIfyCustomPropites.CreateCustomProperty(
-                    this.ComponentMetaData.CustomPropertyCollection.New(),
-                    currnetCustomProperty.Name,
-                    currnetCustomProperty.DefaultValue,
-                    currnetCustomProperty.Description,
-                    currnetCustomProperty.PropertyExpressionType,
+                    this.ComponentMetaData.CustomPropertyCollection.New(), 
+                    currnetCustomProperty.Name, 
+                    currnetCustomProperty.DefaultValue, 
+                    currnetCustomProperty.Description, 
+                    currnetCustomProperty.PropertyExpressionType, 
                     currnetCustomProperty.PersistState);
             }
         }
 
         /// <summary>
-        /// Called after the component has returned VS_NEEDSNEWMETADATA from Validate. Removes any input columns that no longer exist in the Virtual Input Collection.
+        ///     Called after the component has returned VS_NEEDSNEWMETADATA from Validate. Removes any input columns that no longer
+        ///     exist in the Virtual Input Collection.
         /// </summary>
         public override void ReinitializeMetaData()
         {
@@ -334,9 +347,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// The validate.
+        ///     The validate.
         /// </summary>
         /// <returns>
+        ///     The <see cref="DTSValidationStatus" />.
         /// </returns>
         [CLSCompliant(false)]
         public override DTSValidationStatus Validate()
@@ -364,9 +378,9 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                         customPropertyKey != XMLIfyCustomPropites.XMLNAMESPACE
                         && customPropertyKey != XMLIfyCustomPropites.INCLUDECOLUMNNAME
                         && customPropertyKey != XMLIfyCustomPropites.ELEMENTFORMAT
-                        && customPropertyKey != XMLIfyCustomPropites.INCLUDEXMLTAG).Select(
-                            customPropertyKey => this.CheckCustomPropertry(customPropertyKey)).Where(
-                                validationStatus => validationStatus != DTSValidationStatus.VS_ISVALID))
+                        && customPropertyKey != XMLIfyCustomPropites.INCLUDEXMLTAG)
+                        .Select(customPropertyKey => this.CheckCustomPropertry(customPropertyKey))
+                        .Where(validationStatus => validationStatus != DTSValidationStatus.VS_ISVALID))
                 {
                     return validationStatus;
                 }
@@ -421,7 +435,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// The add xml column.
         /// </summary>
         /// <param name="output">
-        /// The output. 
+        /// The output.
         /// </param>
         private void AddXmlColumn(IDTSOutput100 output)
         {
@@ -434,10 +448,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// The check custom propertry.
         /// </summary>
         /// <param name="customPropertyKeyName">
-        /// The custom Property Key Name. 
+        /// The custom Property Key Name.
         /// </param>
         /// <returns>
-        /// The DTS Validation Status 
+        /// The DTS Validation Status
         /// </returns>
         private DTSValidationStatus CheckCustomPropertry(string customPropertyKeyName)
         {
@@ -450,7 +464,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 {
                     this.InternalFireError(
                         string.Format(
-                            "The {0} property has been removed from the component.",
+                            "The {0} property has been removed from the component.", 
                             this.customPropertiesList[customPropertyKeyName].Name));
                     return DTSValidationStatus.VS_NEEDSNEWMETADATA;
                 }
@@ -468,7 +482,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 // The property doesn't exist.
                 this.InternalFireError(
                     string.Format(
-                        "The {0} property has been removed from the component.",
+                        "The {0} property has been removed from the component.", 
                         this.customPropertiesList[customPropertyKeyName].Name));
                 return DTSValidationStatus.VS_NEEDSNEWMETADATA;
             }
@@ -478,10 +492,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// DTSs the validation status.
         /// </summary>
         /// <param name="customPropertyName">
-        /// Name of the custom property. 
+        /// Name of the custom property.
         /// </param>
         /// <returns>
-        /// DTS Validation Status 
+        /// DTS Validation Status
         /// </returns>
         private DTSValidationStatus DtsValidationStatus(string customPropertyName)
         {
@@ -493,7 +507,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 {
                     this.InternalFireError(
                         string.Format(
-                            "The {0} property has been removed from the component.",
+                            "The {0} property has been removed from the component.", 
                             this.customPropertiesList[customPropertyName].Name));
                     return DTSValidationStatus.VS_NEEDSNEWMETADATA;
                 }
@@ -503,7 +517,7 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 // The property doesn't exist.
                 this.InternalFireError(
                     string.Format(
-                        "The {0} property has been removed from the component.",
+                        "The {0} property has been removed from the component.", 
                         this.customPropertiesList[customPropertyName].Name));
                 return DTSValidationStatus.VS_NEEDSNEWMETADATA;
             }
@@ -512,25 +526,13 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         }
 
         /// <summary>
-        /// The internal fire error.
-        /// </summary>
-        /// <param name="message">
-        /// The message. 
-        /// </param>
-        private void InternalFireError(string message)
-        {
-            this.ComponentMetaData.FireError(
-                0, this.ComponentMetaData.Name, message, string.Empty, 0, out this.cancelEvent);
-        }
-
-        /// <summary>
         /// Formats the attribute output.
         /// </summary>
         /// <param name="buffer">
-        /// The buffer. 
+        /// The buffer.
         /// </param>
         /// <param name="writer">
-        /// The writer. 
+        /// The writer.
         /// </param>
         private void FormatAttributeOutput(PipelineBuffer buffer, XmlWriter writer)
         {
@@ -549,10 +551,10 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
         /// Formats the element output.
         /// </summary>
         /// <param name="buffer">
-        /// The buffer. 
+        /// The buffer.
         /// </param>
         /// <param name="writer">
-        /// The writer. 
+        /// The writer.
         /// </param>
         private void FormatElementOutput(PipelineBuffer buffer, XmlWriter writer)
         {
@@ -572,7 +574,20 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
                 // Is the column null?
                 if (!buffer.IsNull(colInfo.BufferColumnIndex))
                 {
-                    writer.WriteValue(buffer[colInfo.BufferColumnIndex].ToString());
+                    BufferColumn bufferColumn = buffer.GetColumnInfo(colInfo.BufferColumnIndex);
+                    if (bufferColumn.DataType == DataType.DT_NTEXT || bufferColumn.DataType == DataType.DT_TEXT)
+                    {
+                        writer.WriteValue(
+                            Encoding.Default.GetString(
+                                buffer.GetBlobData(
+                                    colInfo.BufferColumnIndex, 
+                                    0, 
+                                    (int)buffer.GetBlobLength(colInfo.BufferColumnIndex))));
+                    }
+                    else
+                    {
+                        writer.WriteValue(buffer[colInfo.BufferColumnIndex].ToString());
+                    }
                 }
                 else
                 {
@@ -581,6 +596,23 @@ namespace Tjoc.SqlServer.Dts.Pipeline.Xmlify
 
                 writer.WriteEndElement();
             }
+        }
+
+        /// <summary>
+        /// The internal fire error.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        private void InternalFireError(string message)
+        {
+            this.ComponentMetaData.FireError(
+                0, 
+                this.ComponentMetaData.Name, 
+                message, 
+                string.Empty, 
+                0, 
+                out this.cancelEvent);
         }
 
         #endregion

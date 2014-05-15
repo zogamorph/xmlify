@@ -8,8 +8,8 @@
     <ProjectGuid>{5F6B3362-5B7E-4C53-A1DA-5DA0620BC374}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tjoc.SqlServer.SSIS.Pipeline.Xmlify2012</RootNamespace>
-    <AssemblyName>Tjoc.SqlServer.SSIS.Pipeline.Xmlify2012</AssemblyName>
+    <RootNamespace>Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014</RootNamespace>
+    <AssemblyName>Tjoc.SqlServer.SSIS.Pipeline.Xmlify2014</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -41,23 +41,23 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\References\2012\Microsoft.SqlServer.DTSPipelineWrap.dll</HintPath>
+      <HintPath>..\..\References\2014\Microsoft.SqlServer.DTSPipelineWrap.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SQLServer.DTSRuntimeWrap, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
+    <Reference Include="Microsoft.SQLServer.DTSRuntimeWrap, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\References\2012\Microsoft.SQLServer.DTSRuntimeWrap.dll</HintPath>
+      <HintPath>..\..\References\2014\Microsoft.SQLServer.DTSRuntimeWrap.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SQLServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SQLServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\2012\Microsoft.SQLServer.ManagedDTS.dll</HintPath>
+      <HintPath>..\..\References\2014\Microsoft.SQLServer.ManagedDTS.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\2012\Microsoft.SqlServer.PipelineHost.dll</HintPath>
+      <HintPath>..\..\References\2014\Microsoft.SqlServer.PipelineHost.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -82,8 +82,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files\Microsoft SQL Server\110\DTS\PipelineComponents"
-copy /Y "$(TargetPath)" "C:\Program Files (x86)\Microsoft SQL Server\110\DTS\PipelineComponents\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files\Microsoft SQL Server\120\DTS\PipelineComponents"
+copy /Y "$(TargetPath)" "C:\Program Files (x86)\Microsoft SQL Server\120\DTS\PipelineComponents\$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
