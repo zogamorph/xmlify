@@ -3,3 +3,12 @@
 ################################################################################
 
 /Xmlify/Tjoc.SqlServer.Dts.Pipeline.Xmlify/obj
+/Xmlify2012/Tjoc.SqlServer.SSIS.Pipeline.Xmlify/obj
+/Xmlify2016/Installer/bin/Debug
+/Xmlify2016/Installer/obj/Debug
+/Xmlify2016/Tjoc.SqlServer.SSIS.Pipeline.Xmlify/bin/Debug
+/Xmlify2016/Tjoc.SqlServer.SSIS.Pipeline.Xmlify/obj
+/Xmlify2014/Tjoc.SqlServer.SSIS.Pipeline.Xmlify/obj
+/.vs
+/Xmlify2016/.vs/Xmlify2016/v15
+/Xmlify2014/.vs/Xmlify2014/v15

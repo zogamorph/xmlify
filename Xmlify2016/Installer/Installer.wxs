@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="5C6B90C9-900E-41F8-9355-73D0D486AC2A"
+           Name="Xmlify 2016"
+           Language="1033"
+           Version="4.0.0.0"
+           Manufacturer="Installer"
+           UpgradeCode="F52B506C-0B57-46E0-900B-F85F9B278620">
+
+    <Package InstallerVersion="400"
+             Compressed="yes"
+             InstallPrivileges="elevated"
+             />
+
+    <Condition Message="You must be an Administrator to install this software.  Please launch set up from an elevated command prompt.">Privileged</Condition>
+
+    <Media Id="1"
+           Cabinet="xmlify2016.cab"
+           EmbedCab="yes" />
+
+    <InstallExecuteSequence>
+      <!-- Automatically uninstall any previous versions -->
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
+
+    <?include GlobalProperties.wxi ?>
+    <?include DirectoryStructure.wxi ?>
+    <?include Feature_xmlify.wxi ?>
+    
+  </Product>
+</Wix>
